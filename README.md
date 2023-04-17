@@ -1,4 +1,4 @@
-### Risk
+# Risk
 A simple script for calculating the likely outcome of a Risk battle.
 
 ## Arguments
