@@ -1,5 +1,5 @@
 # Risk
-A simple script for calculating the likely outcome of a Risk battle.
+A simple python script for calculating the likely outcome of a Risk battle.
 
 ## Arguments
 The script takes in the number of `attackers` and `defenders` as arguments. 
