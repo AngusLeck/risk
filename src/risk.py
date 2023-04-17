@@ -63,6 +63,7 @@ def likelihoodOfVictory(attackDie: int, defenseDie: int):
 
 
 def readData(fileName: str, array):
+    touch("./data/" + fileName)
     file = open("./data/" + fileName, "r")
     lines = file.readlines()
     file.close()
@@ -81,6 +82,11 @@ def readData(fileName: str, array):
             else:
                 readVal = float(readVal)
             array[rowNum][colNum] = readVal
+
+
+def touch(fileName: str):
+    file = open(fileName, "w+")
+    file.close()
 
 
 def writeData(fileName: str, array):
