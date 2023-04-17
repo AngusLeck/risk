@@ -85,7 +85,7 @@ def readData(fileName: str, array):
 
 
 def touch(fileName: str):
-    file = open(fileName, "w+")
+    file = open(fileName, "a+")
     file.close()
 
 
