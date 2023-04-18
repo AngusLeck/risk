@@ -20,18 +20,30 @@ def main():
     writeData("likelihoodOfVictory.txt", likelihoodOfVictoryArray)
 
 
+### Functions for the calculation ###
+
 def expectedSurvivors(attackers: int, defenders: int):
-    return recursiveMarkovChain(attackers, defenders, expectedSurvivorsArray, lambda attackers: attackers)
+    return recursiveMarkovChain(
+        attackers,
+        defenders,
+        expectedSurvivorsArray,
+        # if there are no defenders then all attackers survive
+        lambda attackers: attackers if attackers > 0 else 0
+    )
 
 
 def likelihoodOfVictory(attackers: int, defenders: int):
-    return recursiveMarkovChain(attackers, defenders, likelihoodOfVictoryArray, lambda attackers: 1)
+    return recursiveMarkovChain(
+        attackers,
+        defenders,
+        likelihoodOfVictoryArray,
+        # if there are no defenders and any attackers they win with probability 1
+        lambda attackers: 1 if attackers > 0 else 0
+    )
 
 
 def recursiveMarkovChain(attackers: int, defenders: int, memoryArray, baseCase):
-    if (attackers <= 0):
-        return 0
-    if (defenders <= 0):
+    if (defenders <= 0 or attackers <= 0):
         return baseCase(attackers)
 
     rememberedValue = memoryArray[attackers-1][defenders-1]
@@ -41,9 +53,12 @@ def recursiveMarkovChain(attackers: int, defenders: int, memoryArray, baseCase):
     attackDie = min(attackers, 3)
     defenseDie = min(defenders, 2)
 
+    # expected value of the chain(a,d) = \sum_l P(l)*chain(a-l, d - dd + l)
     result = sum(
         [
+            # the probability of losses
             probabilityOfXLosses(attackDie, defenseDie, losses)
+            # the expected value of the scenario after losses
             * recursiveMarkovChain(attackers - losses, defenders - defenseDie + losses, memoryArray, baseCase)
             for losses in range(min(attackDie, defenseDie) + 1)
         ]
@@ -74,6 +89,8 @@ def probabilityOfXLossesTwoDefenders(attackDie: int, losses: int):
         return [0, 0.448, 0.292][attackDie - 1]
     return [0.745, 0.448, 0.336][attackDie - 1]
 
+
+### Functions for reading and writing data ###
 
 def readData(fileName: str, array):
     touch("./data/" + fileName)
@@ -108,5 +125,7 @@ def writeData(fileName: str, array):
         file.write(",".join([str(x) for x in row])+"\n")
     file.close()
 
+
+### Do it ###
 
 main()
