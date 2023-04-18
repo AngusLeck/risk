@@ -1,21 +1,20 @@
-import sys
+from parseArguments import *
 from readWriteData import *
 from likelihoodOfVictory import *
 from expectedSurvivors import *
 
 
 def main():
-    # parse arguments
-    attackers = int(sys.argv[1])
-    defenders = int(sys.argv[2])
-    shouldReadWrite = bool(sys.argv[3]) if len(sys.argv) > 3 else False
+    args = parseArguments()
+    attackers = args.attackers
+    defenders = args.defenders
 
     # initialise variables
-    maxDice = max(attackers, defenders, 200 if shouldReadWrite else 1)
+    maxDice = max(attackers, defenders, 200 if args.write else 1)
     expectedSurvivorsArray = [[None]*maxDice for x in range(maxDice)]
     likelihoodOfVictoryArray = [[None]*maxDice for x in range(maxDice)]
 
-    if (shouldReadWrite):
+    if (args.read):
         readData("expectedSurvivors.txt", expectedSurvivorsArray)
         readData("likelihoodOfVictory.txt", likelihoodOfVictoryArray)
 
@@ -26,6 +25,7 @@ def main():
         ) * 100,
         1
     )
+
     survivors = round(
         expectedSurvivors(
             attackers, defenders, expectedSurvivorsArray
@@ -39,7 +39,7 @@ def main():
         + str(survivors) + " survivors on average"
     )
 
-    if (shouldReadWrite):
+    if (args.write):
         writeData("expectedSurvivors.txt", expectedSurvivorsArray)
         writeData("likelihoodOfVictory.txt", likelihoodOfVictoryArray)
 
