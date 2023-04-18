@@ -7,6 +7,13 @@ def recursiveMarkovChain(attackers: int, defenders: int, memoryArray, baseCase):
 
     rememberedValue = memoryArray[attackers-1][defenders-1]
     if (rememberedValue != None):
+        print(
+            "remembered: ("
+            + str(attackers)
+            + ", " + str(defenders)
+            + ", " + str(rememberedValue)
+            + ")"
+        )
         return rememberedValue
 
     attackDie = min(attackers, 3)

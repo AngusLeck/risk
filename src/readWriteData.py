@@ -1,6 +1,9 @@
+relativePath = "./src/data/"
+
+
 def readData(fileName: str, array):
-    touch("./data/" + fileName)
-    file = open("./data/" + fileName, "r")
+    touch(relativePath + fileName)
+    file = open(relativePath + fileName, "r")
     lines = file.readlines()
     file.close()
 
@@ -26,7 +29,7 @@ def touch(fileName: str):
 
 
 def writeData(fileName: str, array):
-    file = open("./data/" + fileName, "w")
+    file = open(relativePath + fileName, "w")
     for row in array:
         file.write(",".join([str(x) for x in row])+"\n")
     file.close()
