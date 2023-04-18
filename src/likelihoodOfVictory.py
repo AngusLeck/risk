@@ -1,4 +1,4 @@
-from recursiveMarkovChain import *
+from src.recursiveMarkovChain import *
 
 
 def likelihoodOfVictory(attackers: int, defenders: int, likelihoodOfVictoryArray):

@@ -1,4 +1,4 @@
-from recursiveMarkovChain import *
+from src.recursiveMarkovChain import *
 
 
 def expectedSurvivors(attackers: int, defenders: int, expectedSurvivorsArray):

@@ -1,3 +1,0 @@
-{
-    "scripts": {"risk": "cd src && python risk.py"}
-}

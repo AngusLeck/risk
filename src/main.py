@@ -1,7 +1,7 @@
-from parseArguments import *
-from readWriteData import *
-from likelihoodOfVictory import *
-from expectedSurvivors import *
+from src.parseArguments import *
+from src.readWriteData import *
+from src.likelihoodOfVictory import *
+from src.expectedSurvivors import *
 
 
 def main():
@@ -44,6 +44,3 @@ def main():
         writeData("likelihoodOfVictory.txt", likelihoodOfVictoryArray)
 
     return [chance, survivors]
-
-
-main()

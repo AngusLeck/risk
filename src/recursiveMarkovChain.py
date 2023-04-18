@@ -1,4 +1,4 @@
-from probabilityOfLosses import *
+from src.probabilityOfLosses import *
 
 
 def recursiveMarkovChain(attackers: int, defenders: int, memoryArray, baseCase):
