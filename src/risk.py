@@ -1,13 +1,13 @@
 import sys
 
-attackers = int(sys.argv[1])
-defenders = int(sys.argv[2])
-maxDice = max(200, attackers, defenders)
-expectedSurvivorsArray = [[None]*maxDice for x in range(maxDice)]
-likelihoodOfVictoryArray = [[None]*maxDice for x in range(maxDice)]
-
 
 def main():
+    attackers = int(sys.argv[1])
+    defenders = int(sys.argv[2])
+    maxDice = max(200, attackers, defenders)
+    expectedSurvivorsArray = [[None]*maxDice for x in range(maxDice)]
+    likelihoodOfVictoryArray = [[None]*maxDice for x in range(maxDice)]
+
     readData("expectedSurvivors.txt", expectedSurvivorsArray)
     readData("likelihoodOfVictory.txt", likelihoodOfVictoryArray)
     print(
@@ -22,7 +22,7 @@ def main():
 
 ### Functions for the calculation ###
 
-def expectedSurvivors(attackers: int, defenders: int):
+def expectedSurvivors(attackers: int, defenders: int, expectedSurvivorsArray):
     return recursiveMarkovChain(
         attackers,
         defenders,
@@ -32,7 +32,7 @@ def expectedSurvivors(attackers: int, defenders: int):
     )
 
 
-def likelihoodOfVictory(attackers: int, defenders: int):
+def likelihoodOfVictory(attackers: int, defenders: int, likelihoodOfVictoryArray):
     return recursiveMarkovChain(
         attackers,
         defenders,
@@ -102,7 +102,7 @@ def readData(fileName: str, array):
         [n for n in l.split(",")] for l in lines
     ]
 
-    rows = range(min(len(readArray), maxDice))
+    rows = range(min(len(readArray), len(array)))
 
     for rowNum in rows:
         for colNum in rows:
