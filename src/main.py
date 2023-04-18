@@ -1,3 +1,4 @@
+import sys
 from src.parseArguments import *
 from src.readWriteData import *
 from src.likelihoodOfVictory import *
@@ -13,6 +14,7 @@ def main():
     maxDice = max(attackers, defenders, 200 if args.write else 1)
     expectedSurvivorsArray = [[None]*maxDice for x in range(maxDice)]
     likelihoodOfVictoryArray = [[None]*maxDice for x in range(maxDice)]
+    sys.setrecursionlimit(args.recursionLimit)
 
     if (args.read):
         readData("expectedSurvivors.txt", expectedSurvivorsArray)
