@@ -4,20 +4,41 @@ import sys
 def main():
     attackers = int(sys.argv[1])
     defenders = int(sys.argv[2])
-    maxDice = max(200, attackers, defenders)
+    shouldReadWrite = bool(sys.argv[3]) if len(sys.argv) > 3 else False
+
+    maxDice = max(attackers, defenders, 200 if shouldReadWrite else 1)
     expectedSurvivorsArray = [[None]*maxDice for x in range(maxDice)]
     likelihoodOfVictoryArray = [[None]*maxDice for x in range(maxDice)]
 
-    readData("expectedSurvivors.txt", expectedSurvivorsArray)
-    readData("likelihoodOfVictory.txt", likelihoodOfVictoryArray)
+    if (shouldReadWrite):
+        readData("expectedSurvivors.txt", expectedSurvivorsArray)
+        readData("likelihoodOfVictory.txt", likelihoodOfVictoryArray)
+
+    chance = round(
+        likelihoodOfVictory(
+            attackers, defenders, likelihoodOfVictoryArray
+        ) * 100,
+        1
+    )
+
+    survivors = round(
+        expectedSurvivors(
+            attackers, defenders, expectedSurvivorsArray
+        ),
+        2
+    )
+
     print(
         "likelihood of victory "
-        + str(round(likelihoodOfVictory(attackers, defenders) * 100, 1))
+        + str(chance)
         + "% with "
-        + str(round(expectedSurvivors(attackers, defenders), 2))
-        + " survivors on average")
-    writeData("expectedSurvivors.txt", expectedSurvivorsArray)
-    writeData("likelihoodOfVictory.txt", likelihoodOfVictoryArray)
+        + str(survivors)
+        + " survivors on average"
+    )
+
+    if (shouldReadWrite):
+        writeData("expectedSurvivors.txt", expectedSurvivorsArray)
+        writeData("likelihoodOfVictory.txt", likelihoodOfVictoryArray)
 
 
 ### Functions for the calculation ###
