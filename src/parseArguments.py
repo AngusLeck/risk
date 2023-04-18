@@ -21,6 +21,7 @@ def parseArguments():
         '--recursion-limit',
         type=int,
         default=1000,
+        metavar="R",
         dest="recursionLimit",
         help="recursion limit, default 1000"
     )
