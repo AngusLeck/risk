@@ -1,10 +1,24 @@
 from argparse import *
 
 
-def parseArguments():
+def parseArguments(defaultAttackers: int, defaultDefenders: int):
     parser = ArgumentParser(description="arguments for risk calculation")
-    parser.add_argument('attackers', type=int, help='number of attackers')
-    parser.add_argument('defenders', type=int, help='number of defenders')
+    parser.add_argument(
+        '--attackers',
+        metavar="a",
+        type=int,
+        help='number of attackers',
+        default=defaultAttackers,
+        required=False
+    )
+    parser.add_argument(
+        '--defenders',
+        metavar="d",
+        type=int,
+        help='number of defenders',
+        default=defaultDefenders,
+        required=False
+    )
     parser.add_argument(
         '--read',
         action=BooleanOptionalAction,

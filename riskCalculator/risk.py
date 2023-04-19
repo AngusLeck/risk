@@ -1,12 +1,12 @@
 import sys
-from src.parseArguments import *
-from src.readWriteData import *
-from src.likelihoodOfVictory import *
-from src.expectedSurvivors import *
+from riskCalculator.parseArguments import *
+from riskCalculator.readWriteData import *
+from riskCalculator.likelihoodOfVictory import *
+from riskCalculator.expectedSurvivors import *
 
 
-def main():
-    args = parseArguments()
+def risk(defaultAttackers: int = 0, defaultDefenders: int = 0):
+    args = parseArguments(defaultAttackers, defaultDefenders)
     attackers = args.attackers
     defenders = args.defenders
 

@@ -1,4 +1,4 @@
-from src.recursiveMarkovChain import *
+from riskCalculator.recursiveMarkovChain import *
 
 
 def expectedSurvivors(attackers: int, defenders: int, expectedSurvivorsArray):
