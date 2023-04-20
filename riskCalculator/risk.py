@@ -37,8 +37,8 @@ def risk(defaultAttackers: int = 0, defaultDefenders: int = 0):
 
     # inform user
     print(
-        "likelihood of victory " + str(chance) + "% with "
-        + str(survivors) + " survivors on average"
+        "Likelihood of victory " + str(chance) + "% with "
+        + str(survivors) + " survivors on average."
     )
 
     if (args.write):

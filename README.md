@@ -32,5 +32,6 @@ The script tells us we have a 52.8% chance of winning, and on average we'll have
 
 ## build & deploy
 bump version in `setup.py`
+`g a . && g c -m "bump version"`
 `python setup.py sdist bdist_wheel`
 `twine upload dist/* --skip-existing`

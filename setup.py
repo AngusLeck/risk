@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.3'
+VERSION = '0.0.4'
 DESCRIPTION = 'Simple python package for calculating expected outcome of a risk battle'
 LONG_DESCRIPTION = 'Simple python package for calculating expected outcome of a risk battle'
 
