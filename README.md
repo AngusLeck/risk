@@ -10,7 +10,7 @@ yarn risk <attackers> <defenders>
 ## Returns
 The likelihood of victory and the average number of survivors (attackers).
 ```sh
-likelihood of victory 52.8% with 2.41 survivors on average
+Likelihood of victory 57.7% with 2.7 survivors on average.
 ```
 
 ## Usage
@@ -24,10 +24,10 @@ We can't attack with all 11 stacks, because we have to leave one behind. So when
 
 We see the following output:
 ```sh
-likelihood of victory 52.8% with 2.41 survivors on average
+Likelihood of victory 57.7% with 2.7 survivors on average.
 ```
 
-The script tells us we have a 52.8% chance of winning, and on average we'll have 2.41 survivors (3.41 if you include the stack left behind).
+The script tells us we have a 57.7% chance of winning, and on average we'll have 2.7 survivors (3.7 if you include the stack left behind).
 
 
 ## build & deploy
